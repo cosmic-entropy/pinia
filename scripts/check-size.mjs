@@ -9,6 +9,8 @@ import { compress } from 'brotli-wasm'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+let x
+
 async function checkFileSize(filePath) {
   if (!fs.existsSync(filePath)) {
     return
