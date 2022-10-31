@@ -9,6 +9,8 @@ import { registerPiniaDevtools, devtoolsPlugin } from './devtools'
 import { IS_CLIENT } from './env'
 import { StateTree, StoreGeneric } from './types'
 
+const abc: string = 'xyz'
+
 /**
  * Creates a Pinia instance to be used by the application
  */
