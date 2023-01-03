@@ -375,7 +375,9 @@ function createSetupStore<
       setupStore[key] = __DEV__ && hot ? prop : wrapAction(key, prop)
 
       if (__DEV__) {
-        _hmrPayload.actions[key] = prop
+        if (_hmrPayload.actions.hasOwnProperty(key)) {
+          _hmrPayload.actions[key] = prop
+        }
       }
 
       // list actions so they can be used in plugins

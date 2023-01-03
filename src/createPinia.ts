@@ -26,7 +26,10 @@ export function createPinia(): Pinia {
     install(app: App) {
       pinia._a = app
       app.provide(piniaSymbol, pinia)
-      app.config.globalProperties.$pinia = pinia
+
+      if (app.config.hasOwnProperty('globalProperties')) {
+        app.config.globalProperties.$pinia = pinia
+      }
       if (IS_CLIENT) {
         // this allows calling useStore() outside of a component setup after
         // installing pinia's plugin
