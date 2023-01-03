@@ -375,8 +375,8 @@ function createSetupStore<
       setupStore[key] = __DEV__ && hot ? prop : wrapAction(key, prop)
 
       if (__DEV__) {
-        if(_hmrPayload.actions.hasOwnProperty(key)){
-        _hmrPayload.actions[key] = prop
+        if (_hmrPayload.actions.hasOwnProperty(key)) {
+          _hmrPayload.actions[key] = prop
         }
       }
 
