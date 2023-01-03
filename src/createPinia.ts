@@ -26,8 +26,8 @@ export function createPinia(): Pinia {
     install(app: App) {
       pinia._a = app
       app.provide(piniaSymbol, pinia)
-      
-      if(app.config.hasOwnProperty('globalProperties')) {
+
+      if (app.config.hasOwnProperty('globalProperties')) {
         app.config.globalProperties.$pinia = pinia
       }
       if (IS_CLIENT) {
