@@ -21,7 +21,7 @@ export function createPinia(): Pinia {
   let _p: Pinia['_p'] = []
   // plugins added before calling app.use(pinia)
   const toBeInstalled: PiniaStorePlugin[] = []
-  console.log(toBeInstalled)
+  
 
   const pinia: Pinia = markRaw({
     install(app: App) {
