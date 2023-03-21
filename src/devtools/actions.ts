@@ -51,6 +51,7 @@ export async function actionGlobalPasteState(pinia: Pinia) {
 
 export async function actionGlobalSaveState(pinia: Pinia) {
   try {
+    console.log(pinia.state.value)
     saveAs(
       new Blob([JSON.stringify(pinia.state.value)], {
         type: 'text/plain;charset=utf-8',
