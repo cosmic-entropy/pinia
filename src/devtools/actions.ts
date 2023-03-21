@@ -37,6 +37,7 @@ export async function actionGlobalCopyState(pinia: Pinia) {
 export async function actionGlobalPasteState(pinia: Pinia) {
   if (checkClipboardAccess()) return
   try {
+    console.log(pinia.state.value)
     pinia.state.value = JSON.parse(await navigator.clipboard.readText())
     toastMessage('Global state pasted from clipboard.')
   } catch (error) {
@@ -51,7 +52,6 @@ export async function actionGlobalPasteState(pinia: Pinia) {
 
 export async function actionGlobalSaveState(pinia: Pinia) {
   try {
-    console.log(pinia.state.value)
     saveAs(
       new Blob([JSON.stringify(pinia.state.value)], {
         type: 'text/plain;charset=utf-8',
