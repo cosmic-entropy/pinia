@@ -12,6 +12,7 @@ export interface PiniaNuxtOptions {
   disableVuex?: boolean
 }
 
+
 const module = defineNuxtModule<PiniaNuxtOptions>({
   name: 'pinia',
   configKey: 'pinia',
