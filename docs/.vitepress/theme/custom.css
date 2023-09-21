@@ -34,7 +34,9 @@
   color: var(--c-text);
   border-color: var(--c-text);
   /* transition when toggling dark mode */
-  transition: background-color 150ms ease-in-out, border-color 150ms ease-in-out,
+  transition:
+    background-color 150ms ease-in-out,
+    border-color 150ms ease-in-out,
     color 150ms ease-in-out;
 }
 
@@ -151,7 +153,9 @@ code,
 div[class*='language-'],
 .action.alt .item.item {
   /* transition when toggling dark mode */
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  transition:
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out;
 }
 
 .sidebar.sidebar.sidebar,
@@ -159,14 +163,18 @@ div[class*='language-'],
 .DocSearch-Search-Icon,
 .DocSearch-Form {
   /* transition when toggling dark mode */
-  transition: transform 250ms ease, background-color 300ms ease-in-out,
+  transition:
+    transform 250ms ease,
+    background-color 300ms ease-in-out,
     color 300ms ease-in-out;
 }
 
 .DocSearch-Button-Key,
 .DocSearch-Footer,
 .DocSearch-Modal {
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out,
+  transition:
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out,
     box-shadow 250ms ease-in-out;
 }
 

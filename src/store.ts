@@ -87,7 +87,7 @@ function createOptionsStore<
   Id extends string,
   S extends StateTree,
   G extends GettersTree<S>,
-  A extends ActionsTree
+  A extends ActionsTree,
 >(
   id: Id,
   options: DefineStoreOptions<Id, S, G, A>,
@@ -114,18 +114,21 @@ function createOptionsStore<
     return assign(
       localState,
       actions,
-      Object.keys(getters || {}).reduce((computedGetters, name) => {
-        computedGetters[name] = markRaw(
-          computed(() => {
-            setActivePinia(pinia)
-            // const context = store || ref(localState).value
-            // @ts-expect-error
-            // return getters![name].call(context, context)
-            return store && getters![name].call(store, store)
-          })
-        )
-        return computedGetters
-      }, {} as Record<string, ComputedRef>)
+      Object.keys(getters || {}).reduce(
+        (computedGetters, name) => {
+          computedGetters[name] = markRaw(
+            computed(() => {
+              setActivePinia(pinia)
+              // const context = store || ref(localState).value
+              // @ts-expect-error
+              // return getters![name].call(context, context)
+              return store && getters![name].call(store, store)
+            })
+          )
+          return computedGetters
+        },
+        {} as Record<string, ComputedRef>
+      )
     )
   }
 
@@ -149,7 +152,7 @@ function createSetupStore<
   SS,
   S extends StateTree,
   G extends Record<string, _Method>,
-  A extends ActionsTree
+  A extends ActionsTree,
 >(
   $id: Id,
   setup: () => SS,
@@ -639,7 +642,7 @@ export function defineStore<
   S extends StateTree = {},
   G extends GettersTree<S> = {},
   // cannot extends ActionsTree because we loose the typings
-  A /* extends ActionsTree */ = {}
+  A /* extends ActionsTree */ = {},
 >(
   id: Id,
   options: Omit<DefineStoreOptions<Id, S, G, A>, 'id'>
@@ -655,7 +658,7 @@ export function defineStore<
   S extends StateTree = {},
   G extends GettersTree<S> = {},
   // cannot extends ActionsTree because we loose the typings
-  A /* extends ActionsTree */ = {}
+  A /* extends ActionsTree */ = {},
 >(options: DefineStoreOptions<Id, S, G, A>): StoreDefinition<Id, S, G, A>
 
 /**

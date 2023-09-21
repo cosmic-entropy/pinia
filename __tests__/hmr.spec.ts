@@ -8,7 +8,7 @@ import {
 } from '../src'
 
 function defineOptions<
-  O extends DefineStoreOptions<string, StateTree, any, any>
+  O extends DefineStoreOptions<string, StateTree, any, any>,
 >(options: O): O {
   return options
 }
