@@ -39,7 +39,9 @@ onMounted(() => {
   padding: 35px 40px 45px;
   background-color: var(--c-bg-accent);
   /* transition when toggling dark mode */
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  transition:
+    background-color 300ms ease-in-out,
+    color 300ms ease-in-out;
 }
 
 .cta {

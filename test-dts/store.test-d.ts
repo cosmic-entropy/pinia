@@ -211,7 +211,7 @@ function takeStore<TStore extends StoreGeneric>(store: TStore): TStore['$id'] {
 
 export const useSyncValueToStore = <
   TStore extends StoreGeneric,
-  TKey extends keyof TStore['$state']
+  TKey extends keyof TStore['$state'],
 >(
   propGetter: () => TStore[TKey],
   store: TStore,

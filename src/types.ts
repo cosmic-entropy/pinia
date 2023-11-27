@@ -207,7 +207,7 @@ export type StoreOnActionListenerContext<
   Id extends string,
   S extends StateTree,
   G /* extends GettersTree<S> */,
-  A /* extends ActionsTree */
+  A /* extends ActionsTree */,
 > = ActionsTree extends A
   ? _StoreOnActionListenerContext<StoreGeneric, string, ActionsTree>
   : {
@@ -223,7 +223,7 @@ export type StoreOnActionListener<
   Id extends string,
   S extends StateTree,
   G /* extends GettersTree<S> */,
-  A /* extends ActionsTree */
+  A /* extends ActionsTree */,
 > = (
   context: StoreOnActionListenerContext<
     Id,
@@ -302,7 +302,7 @@ export interface StoreWithState<
   Id extends string,
   S extends StateTree,
   G /* extends GettersTree<StateTree> */,
-  A /* extends ActionsTree */
+  A /* extends ActionsTree */,
 > extends StoreProperties<Id> {
   /**
    * State of the Store. Setting it will replace the whole state.
@@ -431,7 +431,7 @@ export type Store<
   S extends StateTree = {},
   G /* extends GettersTree<S>*/ = {},
   // has the actions without the context (this) for typings
-  A /* extends ActionsTree */ = {}
+  A /* extends ActionsTree */ = {},
 > = StoreWithState<Id, S, G, A> &
   UnwrapRef<S> &
   StoreWithGetters<G> &
@@ -462,7 +462,7 @@ export type GenericStore<
   S extends StateTree = StateTree,
   G /* extends GettersTree<S> */ = GettersTree<S>,
   // has the actions without the context (this) for typings
-  A /* extends ActionsTree */ = ActionsTree
+  A /* extends ActionsTree */ = ActionsTree,
 > = StoreWithState<Id, S, G, A> &
   UnwrapRef<S> &
   StoreWithGetters<G> &
@@ -477,7 +477,7 @@ export interface StoreDefinition<
   Id extends string = string,
   S extends StateTree = StateTree,
   G /* extends GettersTree<S>*/ = GettersTree<S>,
-  A /* extends ActionsTree */ = ActionsTree
+  A /* extends ActionsTree */ = ActionsTree,
 > {
   /**
    * Returns a store, creates it if necessary.
@@ -507,7 +507,7 @@ export interface PiniaCustomProperties<
   Id extends string = string,
   S extends StateTree = StateTree,
   G /* extends GettersTree<S> */ = GettersTree<S>,
-  A /* extends ActionsTree */ = ActionsTree
+  A /* extends ActionsTree */ = ActionsTree,
 > {}
 
 /**
@@ -538,7 +538,7 @@ export type ActionsTree = Record<string, _Method>
  */
 type _SpreadStateFromStore<SS, K extends readonly any[]> = K extends readonly [
   infer A,
-  ...infer Rest
+  ...infer Rest,
 ]
   ? A extends string | number | symbol
     ? SS extends Record<A, _Method | ComputedRef<any>>
@@ -555,7 +555,7 @@ type _SpreadStateFromStore<SS, K extends readonly any[]> = K extends readonly [
 type _SpreadPropertiesFromObject<
   SS,
   K extends readonly any[],
-  T
+  T,
 > = K extends readonly [infer A, ...infer Rest]
   ? A extends string | number | symbol
     ? SS extends Record<A, T>
@@ -614,7 +614,7 @@ export interface DefineStoreOptions<
   Id extends string,
   S extends StateTree,
   G /* extends GettersTree<S> */,
-  A /* extends Record<string, StoreAction> */
+  A /* extends Record<string, StoreAction> */,
 > extends DefineStoreOptionsBase<S, Store<Id, S, G, A>> {
   /**
    * Unique string key to identify the store across the application.
@@ -655,7 +655,7 @@ export interface DefineSetupStoreOptions<
   // NOTE: Passing SS seems to make TS crash
   S extends StateTree,
   G,
-  A /* extends ActionsTree */
+  A /* extends ActionsTree */,
 > extends DefineStoreOptionsBase<S, Store<Id, S, G, A>> {
   /**
    * Extracted actions. Added by useStore(). SHOULD NOT be added by the user when
@@ -672,7 +672,7 @@ export interface DefineStoreOptionsInPlugin<
   Id extends string,
   S extends StateTree,
   G,
-  A
+  A,
 > extends Omit<DefineStoreOptions<Id, S, G, A>, 'id' | 'actions'> {
   /**
    * Extracted object of actions. Added by useStore() when the store is built
