@@ -151,8 +151,8 @@ export type _MapStateObjectReturn<
   [key in keyof T]: () => T[key] extends (store: any) => infer R
     ? R
     : T[key] extends keyof Store<Id, S, G, A>
-    ? Store<Id, S, G, A>[T[key]]
-    : never
+      ? Store<Id, S, G, A>[T[key]]
+      : never
 }
 
 /**
