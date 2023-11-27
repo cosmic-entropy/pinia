@@ -544,8 +544,8 @@ type _SpreadStateFromStore<SS, K extends readonly any[]> = K extends readonly [
     ? SS extends Record<A, _Method | ComputedRef<any>>
       ? _SpreadStateFromStore<SS, Rest>
       : SS extends Record<A, any>
-      ? Record<A, UnwrapRef<SS[A]>> & _SpreadStateFromStore<SS, Rest>
-      : never
+        ? Record<A, UnwrapRef<SS[A]>> & _SpreadStateFromStore<SS, Rest>
+        : never
     : {}
   : {}
 
