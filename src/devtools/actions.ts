@@ -1,3 +1,5 @@
+console.log(pinia.state.value)
+
 import { Pinia } from '../rootStore'
 import { saveAs } from './file-saver'
 import { toastMessage } from './utils'
