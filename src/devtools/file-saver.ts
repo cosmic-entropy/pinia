@@ -15,12 +15,12 @@ const _global = /*#__PURE__*/ (() =>
   typeof window === 'object' && window.window === window
     ? window
     : typeof self === 'object' && self.self === self
-    ? self
-    : typeof global === 'object' && global.global === global
-    ? global
-    : typeof globalThis === 'object'
-    ? globalThis
-    : { HTMLElement: null })()
+      ? self
+      : typeof global === 'object' && global.global === global
+        ? global
+        : typeof globalThis === 'object'
+          ? globalThis
+          : { HTMLElement: null })()
 
 export interface Options {
   autoBom?: boolean
@@ -113,13 +113,13 @@ export type SaveAs =
 export const saveAs: SaveAs = !IS_CLIENT
   ? () => {} // noop
   : // Use download attribute first if possible (#193 Lumia mobile) unless this is a macOS WebView
-  'download' in HTMLAnchorElement.prototype && !isMacOSWebView
-  ? downloadSaveAs
-  : // Use msSaveOrOpenBlob as a second approach
-  'msSaveOrOpenBlob' in _navigator
-  ? msSaveAs
-  : // Fallback to using FileReader and a popup
-    fileSaverSaveAs
+    'download' in HTMLAnchorElement.prototype && !isMacOSWebView
+    ? downloadSaveAs
+    : // Use msSaveOrOpenBlob as a second approach
+      'msSaveOrOpenBlob' in _navigator
+      ? msSaveAs
+      : // Fallback to using FileReader and a popup
+        fileSaverSaveAs
 
 function downloadSaveAs(blob: Blob, name = 'download', opts?: Options) {
   const a = document.createElement('a')
