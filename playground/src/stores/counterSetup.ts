@@ -37,7 +37,7 @@ export const useCounter = defineStore('counter-setup', () => {
     return n
   }
 
-  async function decrementToZero(interval: number = 300) {
+  async function decrementToZero(interval = 300) {
     if (state.n <= 0) return
 
     while (state.n > 0) {

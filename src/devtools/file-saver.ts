@@ -121,7 +121,7 @@ export const saveAs: SaveAs = !IS_CLIENT
   : // Fallback to using FileReader and a popup
     fileSaverSaveAs
 
-function downloadSaveAs(blob: Blob, name: string = 'download', opts?: Options) {
+function downloadSaveAs(blob: Blob, name = 'download', opts?: Options) {
   const a = document.createElement('a')
 
   a.download = name
@@ -155,7 +155,7 @@ function downloadSaveAs(blob: Blob, name: string = 'download', opts?: Options) {
   }
 }
 
-function msSaveAs(blob: Blob, name: string = 'download', opts?: Options) {
+function msSaveAs(blob: Blob, name = 'download', opts?: Options) {
   if (typeof blob === 'string') {
     if (corsEnabled(blob)) {
       download(blob, name, opts)
