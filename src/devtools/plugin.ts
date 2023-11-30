@@ -107,7 +107,7 @@ export function registerPiniaDevtools(app: App, pinia: Pinia) {
       })
 
       api.on.inspectComponent((payload, ctx) => {
-        const proxy = (payload.componentInstance?.proxy) as
+        const proxy = payload.componentInstance?.proxy as
           | ComponentPublicInstance
           | undefined
         if (proxy?._pStores) {
