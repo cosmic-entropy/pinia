@@ -80,7 +80,7 @@ const { assign } = Object
 
 function isComputed<T>(value: ComputedRef<T> | unknown): value is ComputedRef<T>
 function isComputed(o: any): o is ComputedRef {
-  return o && o.effect
+  return o?.effect
 }
 
 function createOptionsStore<

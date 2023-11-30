@@ -107,11 +107,10 @@ export function registerPiniaDevtools(app: App, pinia: Pinia) {
       })
 
       api.on.inspectComponent((payload, ctx) => {
-        const proxy = (payload.componentInstance &&
-          payload.componentInstance.proxy) as
+        const proxy = payload.componentInstance?.proxy as
           | ComponentPublicInstance
           | undefined
-        if (proxy && proxy._pStores) {
+        if (proxy?._pStores) {
           const piniaStores = (
             payload.componentInstance.proxy as ComponentPublicInstance
           )._pStores!
@@ -124,7 +123,7 @@ export function registerPiniaDevtools(app: App, pinia: Pinia) {
               value: store.$state,
             })
 
-            if (store._getters && store._getters.length) {
+            if (store._getters?.length) {
               payload.instanceData.state.push({
                 type: getStoreType(store.$id),
                 key: 'getters',

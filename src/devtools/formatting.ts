@@ -68,7 +68,7 @@ export function formatStoreForInspectorState(
   }
 
   // avoid adding empty getters
-  if (store._getters && store._getters.length) {
+  if (store._getters?.length) {
     state.getters = store._getters.map((getterName) => ({
       editable: false,
       key: getterName,
