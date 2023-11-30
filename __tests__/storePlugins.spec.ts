@@ -43,7 +43,7 @@ describe('store plugins', () => {
 
     // must call use after installing the plugin
     pinia.use(({ app, store }) => {
-      if (!store.$state.hasOwnProperty('pluginN')) {
+      if (!Object.prototype.hasOwnProperty.call(store.$state, 'pluginN')) {
         // @ts-expect-error: cannot be a ref yet
         store.$state.pluginN = ref(20)
       }
@@ -129,7 +129,7 @@ describe('store plugins', () => {
 
     // must call use after installing the plugin
     pinia.use(({ app, store }) => {
-      if (!store.$state.hasOwnProperty('shared')) {
+      if (!Object.prototype.hasOwnProperty.call(store.$state, 'shared')) {
         // @ts-expect-error: cannot be a ref yet
         store.$state.shared = ref(20)
       }
