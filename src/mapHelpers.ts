@@ -109,7 +109,7 @@ export function mapStores<Stores extends any[]>(
   }
 
   return stores.reduce((reduced, useStore) => {
-    // @ts-ignore: $id is added by defineStore
+    // @ts-expect-error: $id is added by defineStore
     reduced[useStore.$id + mapStoreSuffix] = function (
       this: ComponentPublicInstance
     ) {
@@ -151,8 +151,8 @@ export type _MapStateObjectReturn<
   [key in keyof T]: () => T[key] extends (store: any) => infer R
     ? R
     : T[key] extends keyof Store<Id, S, G, A>
-    ? Store<Id, S, G, A>[T[key]]
-    : never
+      ? Store<Id, S, G, A>[T[key]]
+      : never
 }
 
 /**
@@ -496,7 +496,7 @@ export function mapWritableState<
 ): _MapWritableStateReturn<S> | _MapWritableStateObjectReturn<S, KeyMapper> {
   return Array.isArray(keysOrMapper)
     ? keysOrMapper.reduce((reduced, key) => {
-        // @ts-ignore
+        // @ts-expect-error
         reduced[key] = {
           get(this: ComponentPublicInstance) {
             return useStore(this.$pinia)[key]
@@ -510,7 +510,7 @@ export function mapWritableState<
       }, {} as _MapWritableStateReturn<S>)
     : Object.keys(keysOrMapper).reduce(
         (reduced, key: keyof KeyMapper) => {
-          // @ts-ignore
+          // @ts-expect-error
           reduced[key] = {
             get(this: ComponentPublicInstance) {
               return useStore(this.$pinia)[keysOrMapper[key]]

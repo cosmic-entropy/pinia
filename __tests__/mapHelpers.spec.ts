@@ -205,9 +205,9 @@ describe('Map Helpers', () => {
           ...computedProperties,
         },
         methods: Object.keys(computedProperties).reduce((methods, name) => {
-          // @ts-ignore
+          // @ts-expect-error
           methods['set_' + name] = function (v: any) {
-            // @ts-ignore
+            // @ts-expect-error
             this[name] = v
           }
           return methods
@@ -219,7 +219,7 @@ describe('Map Helpers', () => {
       expect(wrapper.text()).toBe(expectedText)
 
       for (const key in computedProperties) {
-        // @ts-ignore
+        // @ts-expect-error
         wrapper.vm['set_' + key]('replaced')
       }
 

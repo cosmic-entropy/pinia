@@ -29,7 +29,7 @@ describe('HMR', () => {
 
     actions: {
       increment(amount = 1) {
-        // @ts-ignore
+        // @ts-expect-error
         this.n += amount
       },
     },
