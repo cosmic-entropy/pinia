@@ -68,7 +68,7 @@ function innerPatch<T extends StateTree>(
     ) {
       target[key] = innerPatch(targetValue, subPatch)
     } else {
-      // @ts-ignore
+      // @ts-expect-error
       target[key] = subPatch
     }
   }

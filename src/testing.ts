@@ -79,7 +79,7 @@ export function createTestingPinia({
 
   plugins.forEach((plugin) => pinia.use(plugin))
 
-  // @ts-ignore: this can fail in TS depending of the existence of jest
+  // @ts-expect-error: this can fail in TS depending of the existence of jest
   createSpy = createSpy || (typeof jest !== undefined && jest.fn)
   if (!createSpy) {
     throw new Error('You must configure the `createSpy` option.')

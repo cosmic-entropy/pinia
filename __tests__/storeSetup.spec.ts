@@ -80,7 +80,7 @@ describe('store with setup syntax', () => {
     expect(spy).not.toHaveBeenCalled()
     const nameRef = ref('Ed')
     store._p.state.value[store.$id].name = nameRef
-    // @ts-ignore
+    // @ts-expect-error
     // store.$state.name = nameRef
     await nextTick()
     expect(spy).toHaveBeenCalledTimes(1)
