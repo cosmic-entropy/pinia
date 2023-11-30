@@ -41,7 +41,7 @@ export const useCounter = defineStore({
       return n
     },
 
-    async decrementToZero(interval: number = 300, usePatch = true) {
+    async decrementToZero(interval = 300, usePatch = true) {
       if (this.n <= 0) return
 
       while (this.n > 0) {

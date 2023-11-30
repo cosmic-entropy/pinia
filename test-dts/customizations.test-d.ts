@@ -109,7 +109,7 @@ defineStore(
 
 type Procedure = (...args: any[]) => any
 
-function debounce<F extends Procedure>(fn: F, time: number = 200) {
+function debounce<F extends Procedure>(fn: F, time = 200) {
   return fn
 }
 
