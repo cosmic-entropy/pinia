@@ -1,6 +1,6 @@
 // @ts-check
 import { resolve } from 'upath'
-import { addPlugin, defineNuxtModule } from '@nuxt/kit'
+import { addPlugin, defineNuxtModule, randomModule } from '@nuxt/kit'
 
 export interface PiniaNuxtOptions {
   /**
@@ -11,6 +11,13 @@ export interface PiniaNuxtOptions {
    */
   disableVuex?: boolean
 }
+
+
+const x = 2
+x = 4
+
+console.log(x)
+
 
 const module = defineNuxtModule<PiniaNuxtOptions>({
   name: 'pinia',
