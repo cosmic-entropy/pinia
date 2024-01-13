@@ -11,12 +11,10 @@ export interface PiniaNuxtOptions {
    */
   disableVuex?: boolean
 }
-
 const x = 2
 x = 4
 
 console.log(x)
-
 const module = defineNuxtModule<PiniaNuxtOptions>({
   name: 'pinia',
   configKey: 'pinia',
