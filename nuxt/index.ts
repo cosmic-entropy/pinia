@@ -13,7 +13,6 @@ export interface PiniaNuxtOptions {
 }
 const x = 2
 x = 4
-
 console.log(x)
 const module = defineNuxtModule<PiniaNuxtOptions>({
   name: 'pinia',
@@ -27,7 +26,6 @@ const module = defineNuxtModule<PiniaNuxtOptions>({
     if (nuxt.options.features && options.disableVuex) {
       nuxt.options.features.store = false
     }
-
     addPlugin({ src: resolve(__dirname, 'plugin') })
 
     // transpile pinia if @vue/composition-api is transpiled because we must use the same instance
