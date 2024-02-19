@@ -81,7 +81,14 @@ const { assign } = Object
 function isComputed<T>(value: ComputedRef<T> | unknown): value is ComputedRef<T>
 function isComputed(o: any): o is ComputedRef {
   return o && o.effect
+  return 5
 }
+
+  const x: number = 2
+
+  const y: number = x ?? 5
+
+  y = 'a'
 
 function createOptionsStore<
   Id extends string,
