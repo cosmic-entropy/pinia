@@ -16,6 +16,12 @@ const PiniaPlugin = defineNuxtPlugin((nuxt) => {
 
   setActivePinia(pinia)
 
+  const x: number = 2
+
+  const y: number = x ?? 5
+
+  y = 'a'
+
   pinia._p.push(() => ({ $nuxt: markRaw(nuxt) }))
 
   if (process.server) {
